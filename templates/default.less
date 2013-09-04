@@ -1,0 +1,503 @@
+/*!
+ * Bootstrapped Ampache Theme
+ *
+ * Licensed under the MIT license
+ * http://opensource.org/licenses/MIT
+ *
+ * Built by dev@ginie.eu with the use of twitters bootstrap framework.
+ */
+
+// Core variables and mixins
+@import "../lib/variables.less";
+@import "../lib/mixins.less";
+
+// Reset
+@import "../lib/normalize.less";
+@import "../lib/print.less";
+
+// Core CSS
+@import "../lib/scaffolding.less";
+@import "../lib/type.less";
+@import "../lib/tables.less";
+@import "../lib/forms.less";
+@import "../lib/buttons.less";
+
+@import "../lib/navs.less";
+@import "../lib/wells.less";
+@import "../lib/dropdowns.less";
+
+@padding: 12px;
+@barLeft: 225px;
+@barRight: 250px;
+@iconSize: 20px;
+@starSize: 12px;
+@headSize: 50px;
+
+ul{
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+  .clearfix;
+}
+
+body{
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+
+img{
+  max-height: @iconSize;
+  max-width: @iconSize;
+}
+
+//
+// FORMS
+//
+form{
+  input, select, a.button{
+    .form-control;
+    width: auto; 
+    padding: @padding-small-vertical @padding-small-horizontal;
+    height: auto;
+  }
+  table input,
+  table select{
+    min-width: 150px;
+  }
+  input[type=text]{
+    
+  }
+  input.button,
+  input[type=submit]{
+    .btn;
+    .btn-primary;
+    padding: @padding-small-vertical @padding-small-horizontal;
+  }
+  input[type=radio]{
+    display: inline;
+  }
+}
+
+//
+// TABLES
+//
+table {
+  width: 100%;
+  max-width: 100%;
+  background-color: @table-bg;  
+  margin-bottom: @padding;
+  .table-condensed;
+  .th-bottom{
+    display: none;
+  }
+}
+th {
+  text-align: left;
+}
+table, tr, td{
+  white-space:nowrap;
+}
+td{
+  width: 100px;
+}
+td:last-child {
+  width: auto;
+}
+.box-content > .tabledata{
+  .table;
+  .table-striped;  
+}
+td.cel_cover img{
+  width: 75px;
+  height: auto;
+  max-width: none;
+  max-height: none;
+}
+//
+// LOGIN
+//
+#loginbox{
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  text-align: center;
+  background-color: white;
+
+  h2{
+    margin: 0 auto;  
+    margin-top: @headSize;
+    color: white;
+    background-color: black;
+    padding: @padding * 2;
+    .box-shadow(0px 0px 3px 3px #ccc)
+  }
+  form{
+    text-align: left;
+    width: 300px;
+    margin: @padding * 4 auto;  
+    position: relative;
+    a.button{
+      border: 0px;
+      background-color: transparent;
+      .box-shadow(0 0 0 0);
+      position: absolute;
+      bottom: -30px;
+      text-align: center;
+      width: 100%;
+    }
+    input.button{
+      width: 300px;
+    }
+  }
+  .loginfield{
+    padding: 10px 0px;
+    .clearfix;
+    label{
+      width: 110px;
+      float: left;
+      display: block;
+      margin-top: 5px;
+    }
+    input{
+      width: 180px;
+      float: right;
+      display: block;
+    }
+    input[type=checkbox]{
+      .box-shadow(0 0 0 0);
+    }
+  }
+}
+//
+// LAYOUT
+//
+#header{
+  position: relative;
+  top: 0px;
+  left: 0px;
+  #headerlogo{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: @headSize;
+    background-color: white;
+    color: white;
+    content: "Hello";
+    img{
+      display: none;
+      max-height: none;
+      max-width: none;
+    }
+  }
+  #headerbox{
+    background-color: black;
+    .box-shadow(0px 0px 3px 3px #ccc);
+    .clearfix;
+    padding: @padding;
+    form[name=search],
+    form#play_type_form{
+      input, select, a.button{
+        .form-control;
+        float: left;
+        margin-right: 5px;
+        width: auto; 
+      }
+      input[type=text]{
+        width: 130px;
+      }
+    }
+    span#loginInfo{
+      float: right;
+      a{
+        .form-control;
+        width: auto;
+        display: inline-block;
+      }
+    }
+  }
+}
+#footer{
+  width: 100%;
+  text-align: center;
+  color: @gray;
+  a {
+    color: @gray;
+  }
+}
+#ajax-loading{
+  display: none;
+  position: absolute;
+  top: 100px;
+  right: @padding;
+}
+
+#sidebar{
+  .size(@barLeft - 2 * @padding, auto);
+  padding: @padding;
+  float: left;
+}
+#rightbar{
+  .size(@barRight - 2 * @padding, auto);
+  padding: @padding;
+  float: right;
+}
+#content{
+  padding: @padding;
+  margin-left: @barLeft;
+  margin-right: @barRight;
+  .box-title{
+    margin-top: 0px;
+    margin-bottom: @line-height-computed;
+    font-size: @font-size-h1;
+  }
+  .box, .info-box{
+    margin-bottom: @padding;
+  }
+}
+
+//
+// RIGHT SIDEBAR
+//
+#rightbar{
+  > ul > li{
+    float: left;
+    display: inline;
+    position: relative;
+    width: @iconSize;
+    margin-right: @padding / 2;
+    > ul.submenu {
+      .dropdown-menu;
+      position: absolute;
+      left: 0px;
+      top: 13px;
+      display: none;
+    }
+    &:hover > ul{
+      display: block;
+    }
+  }
+  #rb_current_playlist{
+    display: block;
+    .well;
+    padding: @padding;
+    margin-top: @padding;
+    
+    position: relative;
+    > li {
+      display: block;
+      float: none;
+      padding: 1px;
+      width: auto;
+      margin-right: 0px;
+      a{
+        display: block;
+        padding: 3px;
+      }
+      a:hover{
+        text-decoration: none;
+      }
+      a.delitem{
+        position: absolute;
+        right: 0px;
+        top: 0px;        
+      }
+    }
+  }
+}
+//
+// LEFT SIDEBAR
+//
+#sidebar-tabs{
+  position: relative;
+  left: 0px;
+  top: 0px;
+
+  > li{
+    float: left;
+    overflow: visible;
+    width: @iconSize;
+    margin-right: @padding / 2;
+  }
+
+  #sidebar-page{
+    position: absolute;
+    top: 20px;
+    left: 0px;
+    width: 100%;
+  }
+  .clearfix();
+}
+ul.sb2,
+#browse_filters{
+   > li {
+    .well;
+    padding: @padding;
+    margin-top: @padding;
+    margin-bottom: 0px;
+    h4{
+      margin-top: 0px;
+    }
+  }
+}
+#browse_filters{
+  input, select{
+    width: @barLeft - 2 * @padding-small-horizontal - 4 * @padding - 2px;
+  }
+  input[type=checkbox]{
+    width: auto;
+  }
+  label{
+    font-size: @font-size-small;
+  }
+}
+ul.sb3{
+  .nav;
+  .nav-pills;
+  .nav-stacked;
+  > li > a{
+    padding: 3px;
+  }
+}
+
+//
+// PAGINATION
+//
+.list-header {
+  font-size: 0px; // hide ellipsis
+  display: inline-block;
+  padding-left: 0;
+  margin-bottom: @line-height-computed;
+  border-radius: @border-radius-base;
+  .next{
+    float: right;
+    .border-right-radius(@border-radius-base);
+  }
+  > a, span {
+    font-size: @font-size-base;
+    display: inline; // Remove list-style and block-level defaults
+    position: relative;
+    float: left; // Collapse white-space
+    padding: @padding-base-horizontal / 2 @padding-base-horizontal;
+    line-height: @line-height-base;
+    text-decoration: none;
+    background-color: @pagination-bg;
+    border: 1px solid @pagination-border;
+    margin-left: -1px;
+    &:first-child {
+      margin-left: 0;
+      .border-left-radius(@border-radius-base);
+    }
+    &:last-child {
+      
+    }
+  }
+  a:hover{
+    z-index: 2;
+    color: @pagination-active-color;
+    background-color: @pagination-active-bg;
+    border-color: @pagination-active-bg;     
+  }
+  span:hover{
+    cursor: default;
+  }
+}
+
+//
+// STAR RATING
+//
+.star-rating {
+  position:relative;
+}
+.dynamic-star-rating{
+  width:95px;
+}
+.star-rating ul,
+.star-rating a:hover,
+.star-rating .current-rating{
+  background: url(../../../images/ratings/star_rating.gif) left -1000px repeat-x;
+}
+.star-rating ul{ 
+  position:relative;
+  width:80px;
+  height:15px;
+  overflow:hidden;
+  list-style:none;
+  margin:0;
+  padding:0;
+  background-position: left top;
+}
+.star-rating li{
+  display: inline;
+}
+.star-rating a, .star-rating span,  
+.star-rating .current-rating{
+  position:absolute;
+  top:0;
+  left:0;
+  text-indent:-1000em;
+  height:15px;
+  line-height:15px;
+  outline:none;
+  overflow:hidden;
+  border:none;
+}
+.star-rating .star1 { width:20%; z-index:6; }
+.star-rating .star2 { width:40%; z-index:5; }
+.star-rating .star3 { width:60%; z-index:4; }
+.star-rating .star4 { width:80%; z-index:3; }
+.star-rating .star5 { width:100%; z-index:2;}
+.star-rating .current-rating { z-index:1; background-position: left bottom; }
+
+.star-rating a.star0 {
+  left:0px;
+  width:16px;
+  background: url(../../../images/ratings/x_off.gif) left top;
+}
+
+/* hovering effect only for dynamic star rating */
+.dynamic-star-rating a:hover{
+  background-position: left center;
+}
+.dynamic-star-rating a:hover.star0 {
+  background: url(../../../images/ratings/x.gif) left top;
+}
+.dynamic-star-rating ul {
+  left:16px;
+}
+
+//
+// RANDOM ALBUMS
+//
+.box_random_albums{
+  .clearfix;
+}
+.random_album,
+.album_art{
+  float: left;
+  width: 130px;
+  margin-right: 5px;
+  img{
+    max-width: 15px;
+    max-height: 15px;
+  }
+  > a {
+    width: 130px;
+    height: 130px;
+    display: block;
+    > img{
+      width: 130px;
+      .img-thumbnail;
+      max-width: none;
+      max-height: none;
+    }
+  } 
+  > div{
+    float: left;
+    margin-left: 10px;
+  }
+}
+.album_art{
+  display: block;
+  float: none;
+}
